@@ -1,8 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<!-- <h1 class="text-center text-primary"><?= $data['title'] ?></h1>
-			<div><?=$data['content'] ?></div> -->
+
 			<h2 class="title text-center">Family Diary</h2>
       <?php Session::showMessage() ?>
 		  <ul id="tabsJustified" class="nav nav-tabs">
@@ -25,7 +24,7 @@
                       <input type="text" class="form-control name" id="nameLog" placeholder="Name" name="name">
                       <span class=""></span>
                     </div>
-                    <span class=""></span>
+                    <div class=""></div>
                   </div>
                 </div>
                 <div class="form-group">
@@ -111,9 +110,3 @@
 </div>
 
 
-
-<?php 
-
-//   was-validated
-echo '<pre>', print_r($data['arr']), '</pre>';
- ?>

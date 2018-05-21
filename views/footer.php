@@ -49,7 +49,7 @@ var app = {
 				input.addClass('is-invalid');
 				input.parent().next().text('').css('display', 'none');
 				input.tooltip({	
-					trigger: 'manual', // вызывается только по команде,а не при hover
+					trigger: 'manual', 
 					placement: 'right',
 					title: textError
 				}).tooltip('show');
@@ -125,8 +125,7 @@ var app = {
 
 app.initialize();
 
-
-
+$('.viewTask').first().css("margin-top", "20px");
 </script>
 </body>
 </html>

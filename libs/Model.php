@@ -9,8 +9,9 @@ class Model
 	{
 		$this->link = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
-		if (!$this->link) {
-		    die('<p style="color: #f00">'.mysqli_connect_error().'-'.mysqli_connect_error() .'</p>'); 
+		if ($this->link->connect_error) {
+		    //die('<p style="color: #f00">'.mysqli_connect_error().'-'.mysqli_connect_error() .'</p>'); 
+		    die('<p style="color: #f00">'.$this->link->connect_error.'</p>'); 
 		}
 	}
 

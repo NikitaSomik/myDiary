@@ -1,6 +1,7 @@
 <?php 
 require_once('models/UserModel.php');
 
+
 class RegisterController extends Controller
 {
 	public $model;
@@ -12,7 +13,7 @@ class RegisterController extends Controller
 
 	public function index()
 	{
-		//echo __METHOD__;
+
 		$data['title'] = 'Main Page';
 		$data['content'] = 'Enter your text!';
 
@@ -33,7 +34,6 @@ class RegisterController extends Controller
 				if (Validator::validation($arr)) {
 					if ($this->model->addUser($arr)) {
 						Session::set('name', $_POST['name']);
-						//Session::set('password', $_POST['password']);
 						Session::set('success', 'Добро пожаловать'.Session::get('name'));
 						header('Location: /diary');
 					}
@@ -56,9 +56,9 @@ class RegisterController extends Controller
 				];
 
 				if (Validator::validation($arr)) {
-					if ($this->model->authUser($arr)) {
+					if ($newArr = $this->model->authUser($arr)) {
 						Session::set('name', $_POST['name']);
-						//Session::set('password', $_POST['password']);
+						Session::set('role', $newArr['name_role']);
 						Session::set('success', 'Добро пожаловать'.Session::get('name'));
 						header('Location: /diary');
 					}
@@ -85,7 +85,6 @@ class RegisterController extends Controller
 	public function logout() 
 	{
 		session::destroy();
-
 	}
 }
 

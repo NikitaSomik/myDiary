@@ -23,26 +23,66 @@
   <!-- Navbar links -->
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav mr-auto">
+
+      <?php if ($_SESSION['role'] == 'Mother'): ?>
+        
+      
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo URL ?>/diary">Diary</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href=""></a>
+        <!-- <a class="nav-link" href=""></a> -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add task</button>
       </li> 
+    <?php endif; ?>
     </ul>
      <ul class="navbar-nav ">
 
-<?php  
-
-  if (isset($_SESSION['name'])): ?>
+<?php if (isset($_SESSION['name'])): ?>
     
-        <!-- <li><a href="#">Hello, <?= $_SESSION['name']; ?></a></li> -->
-        <!-- <li><a href="<?php //echo URL ?>/user/edit">Edit my profile</a></li> -->
         <li><a class="nav-link" href="<?php echo URL ?>/logout"><span class="glyphicon glyphicon-log-out"></span>Exit</a></li>
 <?php endif ?>
       </ul>
   </div> 
 </nav>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add task</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="formAddTask" action="" method="POST" class="form-horizontal" role="form">
+      <div class="modal-body">
+        
+                <div class="form-group">
+                  <label for="task" class="col-sm-2 control-label sr-only"></label>
+                  <div class="col-sm-10">
+                      <input type="text" name="task" class="form-control task" id="task" placeholder="Add new task">
+                  </div>
+                  <span class="text-muted"></span>
+                </div>
+                <div class="form-group">
+                  <label for="describe" class="col-sm-2 control-label sr-only"></label>
+                  <div class="col-sm-10">
+                      <textarea name="describe" id="describe" class="form-control" cols="30" rows="5" placeholder="Describe task"></textarea>
+                  </div>
+                  <span class="text-muted"></span>
+                  </div>
+                 
+               <div class="form-group">
+            <label for="date" class="col-sm-2 control-label labelBirth">Last time</span></label>
+            <div class="col-sm-2">
+              <input type="datetime-local" name="ltime" id="date" class="ltime">
+          </div>
+          <span class="text-muted"></span>
+        </div>
+            
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" name="addTask" class="btn btn-primary">Add</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
